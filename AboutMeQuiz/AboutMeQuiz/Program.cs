@@ -8,11 +8,11 @@ namespace AboutMeQuiz
         {
             //Define questions and answers
             string[] questions = {
-                "How old was I when I g11ot my driver's license?",
+                "How old was I when I got my driver's license?",
                 "T or F: I can wiggle my ears.",
                 "T or F: I like cats more than dogs.",
                 "What is the last name of my favorite author?",
-                "T or F:I've had to different legal names. "
+                "T or F:I've had two different legal names. "
             };
 
             string[] answers = {
@@ -34,11 +34,12 @@ namespace AboutMeQuiz
                 bool correct = CheckAnswer(answers[i], userAnswer);
 
                 //Display correct answer
-
+                DisplayResult(correct, answers[i]);
                 score = UpdateScore(score, correct);
             }
 
             //Display score to user
+            Console.WriteLine($"Quiz over: You scored {score}/5.");
 
         }
 
@@ -76,7 +77,13 @@ namespace AboutMeQuiz
         //Displays right or wrong, and the correct answer
         static void DisplayResult(bool correct, string answer)
         {
-
+            if (correct)
+            {
+                Console.WriteLine("Correct!");
+            }
+            else {
+                Console.WriteLine($"Wrong! The correct answer is {answer}");
+            }
         }
 
         //Determines whether another point should be added
@@ -84,6 +91,7 @@ namespace AboutMeQuiz
         static int UpdateScore(int currentScore, bool correctAnswer)
         {
             int newScore = 0;
+            if (correctAnswer) newScore = currentScore + 1;
             return newScore;
         }
     }
