@@ -26,32 +26,38 @@ namespace AboutMeQuiz
             //For tallying the user score
             int score = 0;
 
+            //Welcome the user
+            Console.WriteLine("Welcome to my About Me Quiz! There are 5 questions. Let's get started!\n\n");
+
             //Start quiz
-            for(int i = 0; i < questions.Length; i++)
+            for (int i = 0; i < questions.Length; i++)
             {
                 //Ask question, get answer, and check answer
                 string userAnswer = AskQuestionGetAnswer(questions[i]);
                 bool correct = CheckAnswer(answers[i], userAnswer);
 
-                //Display correct answer
+                //Display correct answer and update score
                 DisplayResult(correct, answers[i]);
                 score = UpdateScore(score, correct);
             }
 
-            //Display score to user
+            //Display total score to user
             Console.WriteLine($"Quiz over: You scored {score}/5.");
 
         }
 
-
+        
         //Asks the given question and returns the user's answer
         static string AskQuestionGetAnswer(string question)
         {
             //Ask question
-            Console.WriteLine(question);
+            Console.WriteLine($"--> {question}");
 
             //Get answer
             string answer = Console.ReadLine().ToLower();
+
+            //Add newline
+            Console.WriteLine();
 
             return answer;
         }
@@ -84,6 +90,9 @@ namespace AboutMeQuiz
             else {
                 Console.WriteLine($"Wrong! The correct answer is {answer}");
             }
+
+            //Add newline before next question
+            Console.WriteLine();
         }
 
         //Determines whether another point should be added
