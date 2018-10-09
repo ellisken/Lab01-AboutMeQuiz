@@ -38,7 +38,7 @@ namespace AboutMeQuiz
 
                 //Display correct answer and update score
                 DisplayResult(correct, answers[i]);
-                score = UpdateScore(score, correct);
+                score += UpdateScore(correct);
             }
 
             //Display total score to user
@@ -74,7 +74,7 @@ namespace AboutMeQuiz
             else if (string.Compare(answer, userInput) == 0) return true;
 
             //Check for bool answers
-            else if (answer[0] == userInput[0]) return true;
+            else if (answer[0] == userInput[0] && (userInput[0] == 't' || userInput[0] == 'f')) return true;
 
             return false;
         }
@@ -97,11 +97,13 @@ namespace AboutMeQuiz
 
         //Determines whether another point should be added
         //and returns the new, updated score
-        static int UpdateScore(int currentScore, bool correctAnswer)
+        static int UpdateScore(bool correctAnswer)
         {
-            int newScore = 0;
-            if (correctAnswer) newScore = currentScore + 1;
-            return newScore;
+            if (correctAnswer)
+            {
+                return 1;
+            }
+            else return 0;
         }
     }
 
