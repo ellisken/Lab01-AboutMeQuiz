@@ -6,4 +6,4 @@ provides a final, total score at the end.
 Clone the repo and open the project in Visual Studio. ctrl+F5 will run the program without debugging. Hit enter
 to exit the console at the end of the game.
 ## Example program execution
-![program-screenshot](./AboutMeQuiz/programExec.PNG)
+![program-screenshot](./AboutMeQuiz/programEx.PNG)
